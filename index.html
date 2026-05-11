@@ -269,10 +269,10 @@ document.addEventListener('click',e=>{
 navDots.forEach(dot=>dot.addEventListener('click',()=>openPanel(+dot.dataset.idx)));
 
 const clock=new THREE.Clock();
-function animate(){
-  setTimeout(() => {
+setTimeout(() => {
   instruction.classList.add('hidden');
 }, 3000);
+function animate(){
   requestAnimationFrame(animate);
   const t=clock.getElapsedTime();
   blobs.forEach((b,i)=>{
