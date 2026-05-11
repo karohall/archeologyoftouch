@@ -30,8 +30,21 @@
     .nav-dot{width:5px;height:5px;border-radius:50%;background:rgba(0,0,0,.25);cursor:pointer;transition:background .3s,transform .3s;}
     .nav-dot.active{background:#000;transform:scale(1.5);}
     #credit{position:fixed;bottom:2rem;left:2rem;font-family:'Share Tech',monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.38);z-index:40;}
-    #instruction{position:fixed;bottom:2rem;right:2rem;font-family:'Share Tech',monospace;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.45);z-index:40;transition:opacity 1s;}
-    #instruction.hidden{opacity:0;}
+    #instruction {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Share Tech', monospace;
+  font-size: 1.1rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.55);
+  z-index: 40;
+  transition: opacity 2s ease;
+  pointer-events: none;
+}
+#instruction.hidden { opacity: 0; }
   </style>
   <link rel="icon" href="data:,">
 </head>
@@ -237,6 +250,9 @@ navDots.forEach(dot=>dot.addEventListener('click',()=>openPanel(+dot.dataset.idx
 
 const clock=new THREE.Clock();
 function animate(){
+  setTimeout(() => {
+  instruction.classList.add('hidden');
+}, 3000);
   requestAnimationFrame(animate);
   const t=clock.getElapsedTime();
   blobs.forEach((b,i)=>{
